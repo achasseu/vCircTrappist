@@ -1,0 +1,55 @@
+##gff-version 3
+##source-version geneious 2022.0.2
+##sequence-region	NC_001408	1	7286
+NC_001408	Geneious	source	1	7286	.	+	.	Name=source Avian leukosis virus - RSA
+NC_001408	Geneious	five_prime_UTR	1	371	.	+	.	
+NC_001408	Geneious	misc_feature	1	21	.	+	.	Name=5' terminal redundancy
+NC_001408	Geneious	misc_feature	1	1	.	.	.	Name=CAP site
+NC_001408	Geneious	regulatory	10	41	.	+	.	
+NC_001408	Geneious	misc_feature	22	101	.	+	.	Name=U5 region
+NC_001408	Geneious	repeat_region	91	101	.	+	.	Name=5'imperfect repeat repeat region
+NC_001408	Geneious	misc_feature	102	371	.	+	.	Name=leader sequence
+NC_001408	Geneious	protein_bind	102	120	.	+	.	Name=protein bind
+NC_001408	Geneious	misc_feature	210	270	.	+	.	Name=dimer promoting sequence
+NC_001408	Geneious	misc_feature	218	248	.	+	.	Name=encapsidation element
+NC_001408	Geneious	regulatory	331	371	.	+	.	
+NC_001408	Geneious	gene	372	6872	.	+	.	Name=env gene
+NC_001408	Geneious	CDS	372	388	.	+	0	Name=env CDS;ID=N6xeERqbL3eeNz9476T3Z4uT/rE.1682604449895.37
+NC_001408	Geneious	CDS	5069	6872	.	+	0	Name=env CDS;ID=N6xeERqbL3eeNz9476T3Z4uT/rE.1682604449895.37
+NC_001408	Geneious	gene	372	2474	.	+	.	Name=MAp19 gene
+NC_001408	Geneious	misc_feature	372	2474	.	+	.	Name=MAp19 misc
+NC_001408	Geneious	gene	372	1029	.	+	.	Name=trans-acting factor gene
+NC_001408	Geneious	CDS	372	387	.	+	0	Name=trans-acting factor CDS;ID=N6xeERqbL3eeNz9476T3Z4uT/rE.1682604449896.38
+NC_001408	Geneious	CDS	674	1029	.	+	0	Name=trans-acting factor CDS;ID=N6xeERqbL3eeNz9476T3Z4uT/rE.1682604449896.38
+NC_001408	Geneious	protein_bind	423	440	.	+	.	Name=trans-acting factor protein bind
+NC_001408	Geneious	protein_bind	502	511	.	+	.	Name=trans-acting factor protein bind
+NC_001408	Geneious	misc_feature	512	540	.	+	.	Name=dimer linkage structure
+NC_001408	Geneious	misc_feature	536	556	.	+	.	Name=dimer linkage structure
+NC_001408	Geneious	misc_feature	701	792	.	+	.	Name=negative splicing regulator
+NC_001408	Geneious	protein_bind	805	818	.	+	.	Name=trans-acting factor protein bind
+NC_001408	Geneious	misc_feature	817	876	.	+	.	Name=enhancer domain
+NC_001408	Geneious	gene	837	902	.	+	.	Name=p2 gene
+NC_001408	Geneious	protein_bind	880	897	.	+	.	Name=p2 protein bind
+NC_001408	Geneious	gene	903	1088	.	+	.	Name=p10 gene
+NC_001408	Geneious	gene	1836	2102	.	+	.	Name=NCp12 gene
+NC_001408	Geneious	misc_feature	1836	2102	.	+	.	Name=nucleocapsid protein
+NC_001408	Geneious	protein_bind	1941	1948	.	+	.	Name=NCp12 protein bind
+NC_001408	Geneious	gene	2103	2474	.	+	.	Name=PRp15 gene
+NC_001408	Geneious	misc_feature	2103	2474	.	+	.	Name=neutral protease large subunit
+NC_001408	Geneious	protein_bind	2388	2400	.	+	.	Name=PRp15 protein bind
+NC_001408	Geneious	gene	2495	5182	.	+	.	Name=pol gene
+NC_001408	Geneious	CDS	2495	5182	.	+	0	Name=pol CDS
+NC_001408	Geneious	misc_feature	2495	5179	.	+	.	Name=reverse transcriptase beta-subunit
+NC_001408	Geneious	misc_feature	2495	4210	.	+	.	Name=pol misc
+NC_001408	Geneious	protein_bind	2950	2964	.	+	.	Name=pol protein bind
+NC_001408	Geneious	gene	4211	5179	.	+	.	Name=INp32 gene
+NC_001408	Geneious	misc_feature	4211	5179	.	+	.	Name=integrase
+NC_001408	Geneious	protein_bind	4747	4758	.	+	.	Name=INp32 protein bind
+NC_001408	Geneious	gene	5244	6260	.	+	.	Name=SU gene
+NC_001408	Geneious	misc_feature	5244	6260	.	+	.	Name=surface protein
+NC_001408	Geneious	protein_bind	5712	5727	.	+	.	Name=SU protein bind
+NC_001408	Geneious	protein_bind	6187	6201	.	+	.	Name=SU protein bind
+NC_001408	Geneious	gene	6261	6869	.	+	.	Name=TM gene
+NC_001408	Geneious	misc_feature	6261	6869	.	+	.	Name=transmembrane protein
+NC_001408	Geneious	protein_bind	6414	6425	.	+	.	Name=TM protein bind
+NC_001408	Geneious	repeat_region	7037	7047	.	+	.	Name=3'imperfect repeat repeat region
