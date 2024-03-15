@@ -35,7 +35,7 @@ To use vCircTrappist ("v" for virus ; "circ" for circular RNA ; "Trappist" for t
 There are three commands that allows you to use vCircTrappist :
 
 
-(1) bash ~/vCircTrappist/vCircTrappist_full.sh -F [path_to_your_fasta_genome_file] -G [path_to_your_GFF_genome_file] -Q [path_to_your_fastq_sequencing_file] -S [F or R according to the strandness of your library]
+(1) `bash ~/vCircTrappist/vCircTrappist_full.sh -F [path_to_your_fasta_genome_file] -G [path_to_your_GFF_genome_file] -Q [path_to_your_fastq_sequencing_file] -S [F or R according to the strandness of your library]`
 
 This command allows you to run the full version of vCircTrappist. This version allows you to run the full script in only one command. It goes from the alignment to the publication-ready graphical visualisation in a straight-forward manner.
 We advise you to clean (trimmomatic, dedupe.sh) your data before running the script to obtain more precise results.
@@ -48,12 +48,12 @@ This command generates different data files that can be used for deep circRNA ch
 - "aln_split.sam" is an alignment file of all the reads that display a "splicing" signatures (linear and circular).
 
 
-(2) bash ~/vCircTrappist/vCircTrappist_short.sh -F [path_to_your_fasta_file] -G [path_to_your_GFF_file] -Q [path_to_your_fastq_file] -S [F or R according to the strandness of your library]
+(2) `bash ~/vCircTrappist/vCircTrappist_short.sh -F [path_to_your_fasta_file] -G [path_to_your_GFF_file] -Q [path_to_your_fastq_file] -S [F or R according to the strandness of your library]`
 
 This command basically provides the same output but allows you to run the script without carrying out the entire alignment procedure which takes time.
 
 
-(3) bash ~/vCircTrappist/visu_only.sh -B [Start_Coordinates_on_the_X_axis] -E [End_Coordinates_on_the_X_axis]
+(3) `bash ~/vCircTrappist/visu_only.sh -B [Start_Coordinates_on_the_X_axis] -E [End_Coordinates_on_the_X_axis]`
 
 This command allows you to run only the graphical visualisation program but on a short segment of the genome. It can be useful in the case of pretty long genomes, such as herpesviridae genomes.
 
