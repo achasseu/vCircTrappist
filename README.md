@@ -5,6 +5,12 @@ This program allows you to perform circRNA alignments on viral genomes (mono- or
 
 The python-based scripts were used in Chasseur _et al_, 2022 and introduced in Chasseur _et al_, 2024 (in preparation). If you use this program, you should cite the latter.
 
+## Requirements
+We advise at least 
+- 64GB RAM
+- 128GB SSD
+- AMD® Ryzen 7 3700x
+to run vCircTrappist.
 
 ## Dependencies
 #### Python3 (>3.9.7)
