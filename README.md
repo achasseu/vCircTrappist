@@ -46,10 +46,22 @@ To use vCircTrappist ("v" for virus ; "circ" for circular RNA ; "Trappist" for t
 There are three commands that allows you to use vCircTrappist :
 
 
-(1) `bash ~/vCircTrappist/vCircTrappist_full.sh -F [path_to_your_fasta_genome_file] -G [path_to_your_GFF_genome_file] -Q [path_to_your_fastq_sequencing_file] -S [F or R according to the strandness of your library]`
+(1) `bash [Path_to_the_vCircTrappist_folder]/vCircTrappist_full.sh -F [path_to_your_fasta_genome_file] -G [path_to_your_GFF_genome_file] -Q [path_to_your_fastq_sequencing_file] -S [F or R according to the strandness of your library] -O [Path_to_your_output_folder]`
 
 This command allows you to run the full version of vCircTrappist. This version allows you to run the full script in only one command. It goes from the alignment to the publication-ready graphical visualisation in a straight-forward manner.
 We advise you to clean (trimmomatic, dedupe.sh) your data before running the script to obtain more precise results.
+
+
+(2) `bash [Path_to_the_vCircTrappist_folder]/vCircTrappist_short.sh -F [path_to_your_fasta_file] -G [path_to_your_GFF_file] -Q [path_to_your_fastq_file] -S [F or R according to the strandness of your library] -O [Path_to_your_output_folder]`
+
+This command basically provides the same output but allows you to run the script without carrying out the entire alignment procedure which takes time.
+
+
+(3) `bash [Path_to_the_vCircTrappist_folder]/visu_only.sh -B [Start_Coordinates_on_the_X_axis] -E [End_Coordinates_on_the_X_axis] -O [Path_to_your_output_folder]`
+
+This command allows you to run only the graphical visualisation program but on a short segment of the genome. It can be useful in the case of pretty long genomes, such as herpesviridae genomes.
+
+### Output
 
 This command generates different data files that can be used for deep circRNA characterization :
 - "sites_sorting.csv" is a table of all circRNA features extracted from the alignment.
@@ -57,15 +69,10 @@ This command generates different data files that can be used for deep circRNA ch
 - "aln_bsj_sites.csv" is the list of the backjunctions and back-splicing sites.
 - Four alignments files "sense_U2", "antisense_U2", "sense_nU2" and "antisense_nU2" allows you to visualize the circRNAs displaying the features you expect to see. For example, you might want to display the circRNAs that only exhibits a canonical splicing signature.
 - "aln_split.sam" is an alignment file of all the reads that display a "splicing" signatures (linear and circular).
+- Two PNG images are generated : "Circ_Coverage_genome.png" and "Circ_list_genome.png". Both of these are publication-ready figures that either depict the full coverage of circRNA reads or back-splice junctions on the genome.
 
-
-(2) `bash ~/vCircTrappist/vCircTrappist_short.sh -F [path_to_your_fasta_file] -G [path_to_your_GFF_file] -Q [path_to_your_fastq_file] -S [F or R according to the strandness of your library]`
-
-This command basically provides the same output but allows you to run the script without carrying out the entire alignment procedure which takes time.
-
-
-(3) `bash ~/vCircTrappist/visu_only.sh -B [Start_Coordinates_on_the_X_axis] -E [End_Coordinates_on_the_X_axis]`
-
-This command allows you to run only the graphical visualisation program but on a short segment of the genome. It can be useful in the case of pretty long genomes, such as herpesviridae genomes.
-
+### Example
+If you run the test, you should obtain a perfect example of publication-ready figures. In this test, we chose a mapping on the Avian Leukosis Virus Genome, using data from Qiu _et al_, 2018 (DOI: 10.1371/journal.pone.0204931).
+![Example of results obtained using vCircTrappist](./TestvCircTrappist/Expected_Coverage_Results.png)
+![Example of results obtained using vCircTrappist](./TestvCircTrappist/Expected_Sashimi_Results.png)
 
