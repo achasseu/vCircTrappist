@@ -19,6 +19,12 @@ do
 		:)
 			echo "option $OPTARG needs an argument"
 		;;			
+	O)
+		echo received -O with $OPTARG "to determine your output file"
+		output=$OPTARG
+		;;
+		:)
+			echo "option $OPTARG needs an argument"
 	*)
 		echo "invalid option $OPTARG"
 		;;
@@ -26,5 +32,5 @@ esac
 done
 
 #launching the graphical visualisator
-python3 ~/circJager/visualisator.py -b $beg -e $en
-python3 ~/vCircTrappist/circ_visualisator.py -b $beg -e $en
+python3 ~/circJager/visualisator.py -b $beg -e $en -o $output
+python3 ~/vCircTrappist/circ_visualisator.py -b $beg -e $en -o $output

@@ -1,8 +1,10 @@
 #!/bin/bash
 
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+echo "Script directory: $SCRIPT_DIR"
 
 #getting options for the diverse scripts
-while getopts ":F:G:Q:S:*" option ;
+while getopts ":F:G:Q:S:O:*" option ;
 do
 	case $option in
 	F)
@@ -33,6 +35,13 @@ do
 		:)
 			echo "option $OPTARG needs an argument"
 		;;
+	O)
+		echo received -O with $OPTARG "to determine your output file"
+		output=$OPTARG
+		;;
+		:)
+			echo "option $OPTARG needs an argument"
+		;;
 	*)
 		echo "invalid option $OPTARG"
 		;;
@@ -42,66 +51,67 @@ done
 
 #align with bwa
 bwa index $FASTA
-bwa mem -a -T15 $FASTA $FASTQ > ./aln.sam
+bwa mem -a -T15 $FASTA $FASTQ > $output/aln.sam
 
 #deleting non-aligned reads
 echo "Deleting non-aligned reads"
-samtools view -F4 ./aln.sam > ./aln_virusb.sam
-python3 ~/vCircTrappist/Correction_SAM.py -I ./aln.sam -S aln_virusb.sam -O aln_virus.sam
-rm ./aln.sam
-rm ./aln_virusb.sam
+samtools view -F4 $output/aln.sam > $output/aln_virusb.sam
+python3 $SCRIPT_DIR/Correction_SAM.py -I $output/aln.sam -S $output/aln_virusb.sam -O $output/aln_virus.sam
+rm $output/aln.sam
+rm $output/aln_virusb.sam
 
-samtools view -bS ./aln_virus.sam > ./aln_virus.bam
-samtools sort ./aln_virus.bam > ./aln_virus_sorted.bam
-samtools depth -a ./aln_virus_sorted.bam > ./aln_virus_coverage.csv
+samtools view -bS $output/aln_virus.sam > $output/aln_virus.bam
+samtools sort $output/aln_virus.bam > $output/aln_virus_sorted.bam
+samtools depth -a $output/aln_virus_sorted.bam > $output/aln_virus_coverage.csv
 
 #looking for splitted reads
 echo "Looking for splitted reads"
-python3 ~/vCircTrappist/splitfilter.py -a ./aln_virus.sam
+python3 $SCRIPT_DIR/splitfilter.py -a $output/aln_virus.sam -o $output
 
 #looking for circRNA signatures (back-splicing)
 echo "Looking for circRNA signatures (back-splicing)"
-python3 ~/vCircTrappist/circHunter3.py -f $FASTA
+python3 $SCRIPT_DIR/circHunter3.py -f $FASTA -o $output
 
 #comparing BS junctions and BS sites (counting)
 echo "Comparing BS junctions and BS sites (counting)"
-python3 ~/vCircTrappist/bsj_id.py
+python3 $SCRIPT_DIR/bsj_id.py -o $output
 
 #are the reads the results of polymerase jump ?
 echo "Are the reads the results of polymerase jump ?"
-python3 ~/vCircTrappist/repet.py -f $FASTA
+python3 $SCRIPT_DIR/repet.py -f $FASTA -o $output
 
 #outputting the reads
 echo "Outputting the reads"
-python3 ~/vCircTrappist/circ_listing.py
+python3 $SCRIPT_DIR/circ_listing.py -o $output
 
 #sorting the reads according to their features + outputting their features
 echo "Sorting the reads according to their features + outputting their features"
-python3 ~/vCircTrappist/circ_caracterisator.py -f $FASTA -g $GFF -s $strand
-python3 ~/vCircTrappist/Correction_SAM.py -I ./aln_virus.sam -S ./circ_sense_U2_a.sam -O ./circ_sense_U2.sam
-python3 ~/vCircTrappist/Correction_SAM.py -I ./aln_virus.sam -S ./circ_antisense_U2_a.sam -O ./circ_antisense_U2.sam
-python3 ~/vCircTrappist/Correction_SAM.py -I ./aln_virus.sam -S ./circ_sense_nonU2_a.sam -O ./circ_sense_nonU2.sam
-python3 ~/vCircTrappist/Correction_SAM.py -I ./aln_virus.sam -S ./circ_antisense_nonU2_a.sam -O ./circ_antisense_nonU2.sam
+python3 $SCRIPT_DIR/circ_caracterisator.py -f $FASTA -g $GFF -s $strand -o $output
+python3 $SCRIPT_DIR/Correction_SAM.py -I $output/aln_virus.sam -S $output/circ_sense_U2_a.sam -O $output/circ_sense_U2.sam
+python3 $SCRIPT_DIR/Correction_SAM.py -I $output/aln_virus.sam -S $output/circ_antisense_U2_a.sam -O $output/circ_antisense_U2.sam
+python3 $SCRIPT_DIR/Correction_SAM.py -I $output/aln_virus.sam -S $output/circ_sense_nonU2_a.sam -O $output/circ_sense_nonU2.sam
+python3 $SCRIPT_DIR/Correction_SAM.py -I $output/aln_virus.sam -S $output/circ_antisense_nonU2_a.sam -O $output/circ_antisense_nonU2.sam
 
 #sorting the reads with SAMtools
 echo "Sorting the reads with SAMtools"
-samtools view -bS ./circ_sense_U2.sam > ./circ_sense_U2.bam
-samtools sort ./circ_sense_U2.bam > ./circ_sense_U2_sorted.bam
-samtools depth -a ./circ_sense_U2_sorted.bam > ./circ_sense_U2_coverage.csv
+samtools view -bS $output/circ_sense_U2.sam > $output/circ_sense_U2.bam
+samtools sort $output/circ_sense_U2.bam > $output/circ_sense_U2_sorted.bam
+samtools depth -a $output/circ_sense_U2_sorted.bam > $output/circ_sense_U2_coverage.csv
 
-samtools view -bS ./circ_antisense_U2.sam > ./circ_antisense_U2.bam
-samtools sort ./circ_antisense_U2.bam > ./circ_antisense_U2_sorted.bam
-samtools depth -a ./circ_antisense_U2_sorted.bam > ./circ_antisense_U2_coverage.csv
+samtools view -bS $output/circ_antisense_U2.sam > $output/circ_antisense_U2.bam
+samtools sort $output/circ_antisense_U2.bam > $output/circ_antisense_U2_sorted.bam
+samtools depth -a $output/circ_antisense_U2_sorted.bam > $output/circ_antisense_U2_coverage.csv
 
-samtools view -bS ./circ_sense_nonU2.sam > ./circ_sense_nonU2.bam
-samtools sort ./circ_sense_nonU2.bam > ./circ_sense_nonU2_sorted.bam
-samtools depth -a ./circ_sense_nonU2_sorted.bam > ./circ_sense_nonU2_coverage.csv
+samtools view -bS $output/circ_sense_nonU2.sam > $output/circ_sense_nonU2.bam
+samtools sort $output/circ_sense_nonU2.bam > $output/circ_sense_nonU2_sorted.bam
+samtools depth -a $output/circ_sense_nonU2_sorted.bam > $output/circ_sense_nonU2_coverage.csv
 
-samtools view -bS ./circ_antisense_nonU2.sam > ./circ_antisense_nonU2.bam
-samtools sort ./circ_antisense_nonU2.bam > ./circ_antisense_nonU2_sorted.bam
-samtools depth -a ./circ_antisense_nonU2_sorted.bam > ./circ_antisense_nonU2_coverage.csv
+samtools view -bS $output/circ_antisense_nonU2.sam > $output/circ_antisense_nonU2.bam
+samtools sort $output/circ_antisense_nonU2.bam > $output/circ_antisense_nonU2_sorted.bam
+samtools depth -a $output/circ_antisense_nonU2_sorted.bam > $output/circ_antisense_nonU2_coverage.csv
 
 #launching the graphical visualisator
-python3 ~/vCircTrappist/covvisualisator.py
-python3 ~/vCircTrappist/circ_visualisator.py
+python3 $SCRIPT_DIR/covvisualisator.py -o $output
+python3 $SCRIPT_DIR/circ_visualisator.py -o $output
+
 echo "Job done."
