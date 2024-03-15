@@ -22,6 +22,8 @@ The python-based scripts were used in Chasseur _et al_, 2022 and introduced in C
   `sudo apt install bwa`
 #### Samtools (>1.10)
   `sudo apt install samtools`
+#### Cigar Python library (>0.1.3)
+  `pip install cigar`
 
 ## Manual
 To run vCircTrappist, just copy/paste the main "vCircTrappist" folder in your root (~/) folder.
