@@ -1,28 +1,36 @@
-Welcome to  vCircTrappist
-	          =============
-	    
+# vCircTrappist
+
+## Introduction	    
 This program allows you to perform circRNA alignments on viral genomes (mono- or multi- segments). The whole script might take from 15 minutes to 3 days to run completely depending on the amount of data to process. In most cases, the results should be available within an hour.
 
 The python-based scripts were used in Chasseur et al, 2022 and introduced in Chasseur et al, 2024. If you use this program, you should cite both these publications.
 
 
-Dependencies:
-Python3
-Pandas
-Numpy
-Matplotlib
-Burrows-Wheeler Aligner (BWA)
-Samtools
+## Dependencies
+#### Python3 (>3.9.7)
+  `sudo apt install python3`
+  `sudo apt install python3-pip`
+#### Numpy (>1.26.4)
+  `pip install numpy`
+#### Pandas (>2.2.1)
+  `pip install pandas` 
+#### Matplotlib (>v3.8.3)
+  `pip install matplotlib`
+#### Burrows-Wheeler Aligner (BWA) (>0.7.17)
+  `sudo apt install bwa`
+#### Samtools (>1.10)
+  `sudo apt install samtools`
 
-
+## Manual
 To run vCircTrappist, just copy/paste the main "vCircTrappist" folder in your root (~/) folder.
 
+### Test
 To test it, you should go to the vCircTrappist folder using "cd ~/vCircTrappist" and copy/paste the command "bash ~/vCircTrappist/TestvCircTrappist.sh" in your terminal. The expected result is located in the Test folder of vCircTrappist while your result is located in the main vCircTrappist folder.
 
 To use vCircTrappist ("v" for virus ; "circ" for circular RNA ; "Trappist" for the fact that we trap circRNAs but also because of the beers), you should provide (1) a fastq file (single-end or only one mate of your paired-end reads), (2) a fasta reference file of your viral genome, (3) a GFF file of your viral genome (no need for the full annotations but the program won't run without it).
 
 
-
+### Usage
 There are three commands that allows you to use vCircTrappist :
 
 
