@@ -2,7 +2,7 @@
 
 #launching the test of vCircTrappist. It should work if all dependencies were correctly installed and your computer setup is sufficient
 
-bash ~/vCircTrappist/vCircTrappist_full.sh -F ./TestvCircTrappist/alv.fasta -G ./TestvCircTrappist/alv.gff -Q ./TestvCircTrappist/aln_virus.fastq -S R
+bash ~/vCircTrappist/vCircTrappist_full.sh -F ./TestvCircTrappist/alv.fasta -G ./TestvCircTrappist/alv.gff -Q ./TestvCircTrappist/data.fastq -S R
 
 rm ./aln_bsj_out.txt
 rm aln_bsj_sites.txt
