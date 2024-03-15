@@ -8,8 +8,9 @@ The python-based scripts were used in Chasseur _et al_, 2022 and introduced in C
 ## Requirements
 We advise at least 
 - 64GB RAM
-- 128GB SSD
+- 256GB SSD
 - AMD® Ryzen 7 3700x
+  
 to run vCircTrappist.
 
 ## Dependencies
