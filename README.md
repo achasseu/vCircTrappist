@@ -33,10 +33,10 @@ to run vCircTrappist with usual sequencing data (20Gb).
   `pip install cigar`
 
 ## Manual
-To run vCircTrappist, just copy/paste the main "vCircTrappist" folder in your root (~/) folder.
+To run vCircTrappist, just copy/paste "vCircTrappist-main" in any folder, at your convenience.
 
 ### Test
-To test it, you should go to the vCircTrappist folder using "cd ~/vCircTrappist" and copy/paste the command "bash ~/vCircTrappist/TestvCircTrappist.sh" in your terminal. The expected result is located in the Test folder of vCircTrappist while your result is located in the main vCircTrappist folder.
+To test it, you should copy/paste the command `bash [path_to_vCircTrappist_folder]/TestvCircTrappist.sh` in your terminal. The expected result is located in the Test folder of vCircTrappist while your result is located in the main vCircTrappist folder.
 
 ### Usage
 
