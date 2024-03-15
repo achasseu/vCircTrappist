@@ -27,10 +27,11 @@ To run vCircTrappist, just copy/paste the main "vCircTrappist" folder in your ro
 ### Test
 To test it, you should go to the vCircTrappist folder using "cd ~/vCircTrappist" and copy/paste the command "bash ~/vCircTrappist/TestvCircTrappist.sh" in your terminal. The expected result is located in the Test folder of vCircTrappist while your result is located in the main vCircTrappist folder.
 
+### Usage
+
 To use vCircTrappist ("v" for virus ; "circ" for circular RNA ; "Trappist" for the fact that we trap circRNAs but also because of the beers), you should provide (1) a fastq file (single-end or only one mate of your paired-end reads), (2) a fasta reference file of your viral genome, (3) a GFF file of your viral genome (no need for the full annotations but the program won't run without it).
 
 
-### Usage
 There are three commands that allows you to use vCircTrappist :
 
 
