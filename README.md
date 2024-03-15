@@ -36,7 +36,7 @@ to run vCircTrappist with usual sequencing data (20Gb).
 To run vCircTrappist, just copy/paste "vCircTrappist-main" in any folder, at your convenience.
 
 ### Test
-To test it, you should copy/paste the command `bash [path_to_vCircTrappist_folder]/TestvCircTrappist.sh` in your terminal. The expected result is located in the Test folder of vCircTrappist while your result is located in the main vCircTrappist folder.
+To test it, you should copy/paste the command `bash [path_to_vCircTrappist_folder]/TestvCircTrappist.sh` in your terminal. Both the expected and obtained results are located in the Test folder of vCircTrappist.
 
 ### Usage
 
