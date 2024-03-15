@@ -11,7 +11,7 @@ We advise at least
 - 256GB SSD
 - AMD® Ryzen 7 3700x
   
-to run vCircTrappist.
+to run vCircTrappist with usual sequencing data (20Gb).
 
 ## Dependencies
 #### Python3 (>3.9.7)
