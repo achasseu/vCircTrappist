@@ -8,8 +8,10 @@ The python-based scripts were used in Chasseur et al, 2022 and introduced in Cha
 
 ## Dependencies
 #### Python3 (>3.9.7)
-  `sudo apt install python3`
-  `sudo apt install python3-pip`
+  ```
+  sudo apt install python3
+  sudo apt install python3-pip
+  ```
 #### Numpy (>1.26.4)
   `pip install numpy`
 #### Pandas (>2.2.1)
