@@ -5,16 +5,17 @@ import sys
 import getopt
 
 argv=sys.argv[1:]
-optlist, args= getopt.getopt(argv,"b:e:")
+optlist, args= getopt.getopt(argv,"b:e:o:")
+for opt, arg in optlist:
+    if opt in "-o":
+        ssU2cov=open(str(arg)+"/circ_sense_U2_coverage.csv")
+        ssnU2cov=open(str(arg)+"/circ_sense_nonU2_coverage.csv")
+        asU2cov=open(str(arg)+"/circ_antisense_U2_coverage.csv")
+        asnU2cov=open(str(arg)+"/circ_antisense_nonU2_coverage.csv")
+        totcov=open(str(arg)+"/aln_virus_coverage.csv")
 
-ssU2cov=open("./circ_sense_U2_coverage.csv")
-ssnU2cov=open("./circ_sense_nonU2_coverage.csv")
-asU2cov=open("./circ_antisense_U2_coverage.csv")
-asnU2cov=open("./circ_antisense_nonU2_coverage.csv")
-totcov=open("./aln_virus_coverage.csv")
-
-###sort the top 20 of the backsplice sites that are the most covered by reads
-sites_sorting=pd.read_csv("./sites_sorting.csv",sep="\t",header=0)
+        ###sort the top 20 of the backsplice sites that are the most covered by reads
+        sites_sorting=pd.read_csv(str(arg)+"/sites_sorting.csv",sep="\t",header=0)
 sites_sorting.sort_values("Count", axis=0, ascending=False,inplace=True, na_position='first')
 first_circ=sites_sorting[:20]
 first_circ=first_circ.loc[:,["Count","5'_Position_(Sense_Strand)","3'_Position_(Sense_Strand)","Chromosome","Sense_Score","U2_Score"]]
@@ -147,7 +148,7 @@ for i in range(chrnb):
             xpoints.append(int(line[1]))
             ypoints.append(int(line[2]))
     plt.plot(xpoints, ypoints,color='darkorange',linewidth=0.5)
-    en=plt.xlim()[-1]
+    en=int(totcov[-1].split("\t")[1])
     for line in first_circ:
         
         if line[3]==id_list[i]:
@@ -217,8 +218,9 @@ for i in range(chrnb):
         plt.hlines(b,beg,en,colors="lightgrey",label="Genome",linewidth=0.3)
 
 
-    
-    plt.savefig("./Circ_Coverage_{name}.png".format(name=str(id_list[i]).replace(".","_").replace("/","_")),dpi=1000,bbox_inches='tight')
+    for opt, arg in optlist:
+        if opt in "-o":
+            plt.savefig(str(arg)+"/Circ_Coverage_{name}.png".format(name=str(id_list[i]).replace(".","_").replace("/","_")),dpi=1000,bbox_inches='tight')
     plt.clf()
 
 
