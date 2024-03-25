@@ -48,6 +48,7 @@ do
 esac
 done
 
+mkdir -p $output
 
 #align with bwa
 bwa index $FASTA

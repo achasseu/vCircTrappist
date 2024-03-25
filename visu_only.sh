@@ -31,6 +31,8 @@ do
 esac
 done
 
+mkdir -p $output
+
 #launching the graphical visualisator
 python3 ~/circJager/visualisator.py -b $beg -e $en -o $output
 python3 ~/vCircTrappist/circ_visualisator.py -b $beg -e $en -o $output

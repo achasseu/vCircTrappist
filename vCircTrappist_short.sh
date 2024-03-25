@@ -49,6 +49,7 @@ do
 esac
 done
 
+mkdir -p $output
 
 samtools view -bS $output/aln_virus.sam > $output/aln_virus.bam
 samtools sort $output/aln_virus.bam > $output/aln_virus_sorted.bam
