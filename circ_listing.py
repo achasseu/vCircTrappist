@@ -1,13 +1,19 @@
 #Programme pour lister les circ
+import sys
+import getopt
 
-sequencing=open("./aln_split.sam")
-sequences=sequencing.readlines()
-backsplice_junctions=open("./aln_bsj_out.txt")
-bsj_list=backsplice_junctions.readlines()
-backsplice_count=open("./aln_kmer_compare.csv")
-count_list=backsplice_count.readlines()
+argv=sys.argv[1:]
+optlist, args= getopt.getopt(argv,"o:")
 
-sam=open("./aln_circ_list.sam",'w')
+for opt, arg in optlist:
+    if opt in "-o":
+        sequencing=open(str(arg)+"/aln_split.sam")
+        sequences=sequencing.readlines()
+        backsplice_junctions=open(str(arg)+"/aln_bsj_out.txt")
+        bsj_list=backsplice_junctions.readlines()
+        backsplice_count=open(str(arg)+"/aln_kmer_compare.csv")
+        count_list=backsplice_count.readlines()
+        sam=open(str(arg)+"/aln_circ_list.sam",'w')
 
 from difflib import *
 

@@ -1,7 +1,17 @@
 #Splicing sites identificator and comparator
 # count_file = open("./lat_bsj_count.csv")
-sites_file = open("./aln_bsj_sites.txt") #this file contains all the backsplice junctions and backsplice sites and the identifiers of the associated reads
-out_file = open("./aln_new_count.csv",'w') #this file will save the count of junctions identified
+import sys
+import getopt
+
+argv=sys.argv[1:]
+optlist, args= getopt.getopt(argv,"o:")
+
+for opt, arg in optlist:
+    if opt in "-o":
+        sites_file = open(str(arg)+"/aln_bsj_sites.txt") #this file contains all the backsplice junctions and backsplice sites and the identifiers of the associated reads
+        out_file = open(str(arg)+"/aln_new_count.csv",'w') #this file will save the count of junctions identified
+
+
 
 # count_lines=count_file.readlines()
 sites_line=sites_file.readlines()

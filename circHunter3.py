@@ -5,21 +5,24 @@ from cigar import Cigar
 
 #accepting the reference file as argument
 argv=sys.argv[1:]
-optlist, args= getopt.getopt(argv,"f:")
+optlist, args= getopt.getopt(argv,"f:o:")
 ref=None
 
 for opt, arg in optlist:
     if opt in "-f":
         ref = open(arg)
+    if opt in "-o":
+        out_file=open(str(arg)+"/aln_circ.sam",'w')                             #Creating a new sequence file containing the circRNA reads
+        out_bsj=open(str(arg)+"/aln_bsj_out.txt",'w')                           #Creating a list containing the backsplice junctions
+        bsj_sites=open(str(arg)+"/aln_bsj_sites.txt",'w')                       #Creating a list containing the backsplice sites
+        verifa=open(str(arg)+"/aln_verifa.txt",'w')                             #Opening the alignment file containing splitted reads
+        fichier = open(str(arg)+"/aln_split.sam")                               #creating a text file to crosscheck the reads
 
 if ref == None:
     print("You forgot your fasta".upper())
 
-fichier = open("./aln_split.sam")                               #Opening the alignment file containing splitted reads
-out_file=open("./aln_circ.sam",'w')                             #Creating a new sequence file containing the circRNA reads
-out_bsj=open("./aln_bsj_out.txt",'w')                           #Creating a list containing the backsplice junctions
-bsj_sites=open("./aln_bsj_sites.txt",'w')                       #Creating a list containing the backsplice sites
-verifa=open("./aln_verifa.txt",'w')                             #creating a text file to crosscheck the reads
+                               
+                          
 
 lignes = fichier.readlines()                                    
 #l_fastq=fastq.readlines()                                       

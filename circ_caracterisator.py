@@ -5,7 +5,7 @@ import sys
 import getopt
 
 argv=sys.argv[1:]
-optlist, args= getopt.getopt(argv,"f:g:s:")
+optlist, args= getopt.getopt(argv,"f:g:s:o:")
 fastafile =None
 gfffile=None
 
@@ -16,27 +16,28 @@ for opt, arg in optlist:
         gfffile = open (arg)
     if opt in "-s":
         strand="{}".format(arg)
+    if opt in "-o":
+        sequencing=open(str(arg)+"/aln_circ_list.sam")
+        finalsorting=open(str(arg)+"/sites_sorting.csv",'w')
+        alnpluscan = open(str(arg)+"/circ_sense_U2_a.sam","w")
+        alnminuscan = open(str(arg)+"/circ_antisense_U2_a.sam","w")
+        alnplusnocan = open(str(arg)+"/circ_sense_nonU2_a.sam","w")
+        alnminusnocan = open(str(arg)+"/circ_antisense_nonU2_a.sam","w")
+        backsplice_count=open(str(arg)+"/aln_kmer_compare.csv")
 
 if fastafile == None or gfffile==None:
     print("You forgot your arguments".upper())
 
-sequencing=open("./aln_circ_list.sam")
+
 sequences=sequencing.readlines()
 
 fasta=fastafile.readlines()
 
 gfflines=gfffile.readlines()
 
-
-backsplice_count=open("./aln_kmer_compare.csv")
 count_list=backsplice_count.readlines()
 
-finalsorting=open("./sites_sorting.csv",'w')
 
-alnpluscan = open("./circ_sense_U2_a.sam","w")
-alnminuscan = open("./circ_antisense_U2_a.sam","w")
-alnplusnocan = open("./circ_sense_nonU2_a.sam","w")
-alnminusnocan = open("./circ_antisense_nonU2_a.sam","w")
 
 finalsorting.write(str("Backjunction\t5'_Splice_Site_(Sense_Strand)\t3'_Splice_Site_(Sense_Strand)\tCount\tSense_Score\tU2_Score\t5'_Position_(Sense_Strand)\t3'_Position_(Sense_Strand)\tMax_CircRNA_Size\tColocalized_Gene\tLongest_Common_Kmer\tCommon_Sequences\tChromosome\tIdentifiers_Of_The_Reads\n"))
 

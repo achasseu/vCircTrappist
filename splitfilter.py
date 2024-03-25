@@ -7,13 +7,15 @@ import getopt
 
 #Accepting arguments to make the program run properly
 argv=sys.argv[1:]
-optlist, args= getopt.getopt(argv,"a:")
+optlist, args= getopt.getopt(argv,"a:o:")
 fichier=None
-out_file=open("./aln_split.sam","w")
+
 
 for opt, arg in optlist:
     if opt in "-a":
         fichier = open(arg)
+    if opt in "-o":
+        out_file=open(str(arg)+"/aln_split.sam","w")
 
 if fichier == None:
     print("You forgot your alignment file".upper())

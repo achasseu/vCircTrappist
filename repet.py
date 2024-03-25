@@ -3,19 +3,21 @@ import sys
 import getopt
 
 argv=sys.argv[1:]
-optlist, args= getopt.getopt(argv,"f:")
+optlist, args= getopt.getopt(argv,"f:o:")
 ref=None
 
 for opt, arg in optlist:
     if opt in "-f":
         ref = open(arg)
+    if opt in "-o":
+        count = open (str(arg)+"/aln_new_count.csv")
+        new_new_count = open(str(arg)+"/aln_kmer_compare.csv",'w')
 
 if ref == None:
     print("You forgot your fasta".upper())
 
-count = open ("./aln_new_count.csv")
+
 fastref=ref.readlines()
-new_new_count = open("./aln_kmer_compare.csv",'w')
 count_lines = count.readlines()
 
 ref=""

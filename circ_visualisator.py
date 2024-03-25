@@ -4,17 +4,18 @@ import sys
 import getopt
 
 argv=sys.argv[1:]
-optlist, args= getopt.getopt(argv,"b:e:")
-
-totcov=open("./aln_virus_coverage.csv")
-totcov=totcov.readlines()
-sites_sorting=pd.read_csv("./sites_sorting.csv",sep="\t",header=0)
-sites_sorting.sort_values("Count", axis=0, ascending=False,inplace=True, na_position='first')
-first_circ=sites_sorting[:102]
-first_circ=first_circ.loc[:,["Count","5'_Position_(Sense_Strand)","3'_Position_(Sense_Strand)","Chromosome","Sense_Score","U2_Score","Max_CircRNA_Size"]]
-circs_list=first_circ.values.tolist()
-totcov=open("./aln_virus_coverage.csv")
-totcov=totcov.readlines()
+optlist, args= getopt.getopt(argv,"b:e:o:")
+for opt, arg in optlist:
+    if opt in "-o":
+        totcov=open(str(arg)+"/aln_virus_coverage.csv")
+        totcov=totcov.readlines()
+        sites_sorting=pd.read_csv(str(arg)+"/sites_sorting.csv",sep="\t",header=0)
+        sites_sorting.sort_values("Count", axis=0, ascending=False,inplace=True, na_position='first')
+        first_circ=sites_sorting[:102]
+        first_circ=first_circ.loc[:,["Count","5'_Position_(Sense_Strand)","3'_Position_(Sense_Strand)","Chromosome","Sense_Score","U2_Score","Max_CircRNA_Size"]]
+        circs_list=first_circ.values.tolist()
+        totcov=open(str(arg)+"/aln_virus_coverage.csv")
+        totcov=totcov.readlines()
 
 
 #determining the number and identities of the viral genomic segments
@@ -87,5 +88,7 @@ for i in range(chrnb):
     plt.hlines(0,0,int(covloc[-1][1]),colors="black",label="Genome",linewidth=0.8)
     plt.xlabel("Position on the genome")
     plt.ylabel("CircRNA abundance\n(RPB)")
-    plt.savefig("./Circ_List_{name}.png".format(name=str(id_list[i]).replace(".","_").replace("/","_")),dpi=1000,bbox_inches='tight')
+    for opt, arg in optlist:
+        if opt in "-o":
+            plt.savefig(str(arg)+"/Circ_List_{name}.png".format(name=str(id_list[i]).replace(".","_").replace("/","_")),dpi=1000,bbox_inches='tight')
     plt.clf()
