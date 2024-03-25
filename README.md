@@ -76,3 +76,5 @@ If you run the test, you should obtain a perfect example of publication-ready fi
 ![Example of results obtained using vCircTrappist](./TestvCircTrappist/Expected_Coverage_Results.png)
 ![Example of results obtained using vCircTrappist](./TestvCircTrappist/Expected_Sashimi_Results.png)
 
+### License
+This program is the property of the University of Namur and is available under a GPLv3 license.
