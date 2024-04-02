@@ -43,7 +43,7 @@ To test it, you should copy/paste the command `bash [path_to_vCircTrappist_folde
 To use vCircTrappist ("v" for virus ; "circ" for circular RNA ; "Trappist" for the fact that we trap circRNAs but also because of the beers), you should provide (1) a fastq file (single-end or only one mate of your paired-end reads), (2) a fasta reference file of your viral genome, (3) a GFF file of your viral genome (no need for the full annotations but the program won't run without it).
 
 
-There are three commands that allows you to use vCircTrappist :
+There are three commands that allow you to use vCircTrappist :
 
 
 (1) `bash [Path_to_the_vCircTrappist_folder]/vCircTrappist_full.sh -F [path_to_your_fasta_genome_file] -G [path_to_your_GFF_genome_file] -Q [path_to_your_fastq_sequencing_file] -S [F or R according to the strandness of your library] -O [Path_to_your_output_folder]`
