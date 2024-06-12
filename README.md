@@ -1,17 +1,17 @@
 # vCircTrappist
 
 ## Introduction	    
-This program allows you to perform circRNA alignments on viral genomes (mono- or multi- segments). The whole script might take from 15 minutes to 3 days to run completely depending on the amount of data to process. In most cases, the results should be available within an hour.
+This program allows to perform circRNA alignments on viral genomes (mono- or multi- segments). The whole script might take from 15 minutes to 3 days to run completely depending on the amount of data to process. In most cases, the results should be available within an hour.
 
 The python-based scripts were used in Chasseur _et al_, 2022 and introduced in Chasseur _et al_, 2024 (in preparation). If you use this program, you should cite the latter.
 
 ## Requirements
-We advise at least 
+The set-up we used was the following :
 - 64GB RAM
-- 256GB SSD
+- 512GB SSD
 - AMD® Ryzen 7 3700x
   
-to run vCircTrappist with usual sequencing data (20Gb).
+to run vCircTrappist with a typical sequencing dataset (20Gb).
 
 ## Dependencies
 #### Python3 (>3.9.7)
@@ -33,7 +33,7 @@ to run vCircTrappist with usual sequencing data (20Gb).
   `pip install cigar`
 
 ## Manual
-To run vCircTrappist, just copy/paste "vCircTrappist-main" in any folder, at your convenience.
+To run vCircTrappist, just download and extract the "vCircTrappist-main" directory in any folder, at your convenience.
 
 ### Test
 To test it, you should copy/paste the command `bash [path_to_vCircTrappist_folder]/TestvCircTrappist.sh` in your terminal. Both the expected and obtained results are located in the Test folder of vCircTrappist.
@@ -67,8 +67,8 @@ This command generates different data files that can be used for deep circRNA ch
 - "sites_sorting.csv" is a table of all circRNA features extracted from the alignment.
 - "aln_circ_list.sam" is an alignment file of all the circRNAs mapped on the viral genome. You can visualize these using third-party programs such as IGV or Geneious.
 - "aln_bsj_sites.csv" is the list of the backjunctions and back-splicing sites.
-- Four alignments files "sense_U2", "antisense_U2", "sense_nU2" and "antisense_nU2" allows you to visualize the circRNAs displaying the features you expect to see. For example, you might want to display the circRNAs that only exhibits a canonical splicing signature.
-- "aln_split.sam" is an alignment file of all the reads that display a "splicing" signatures (linear and circular).
+- Four alignments files "sense_U2", "antisense_U2", "sense_nU2" and "antisense_nU2" allow you to visualize the circRNAs displaying the features you expect to see. For example, you might want to display the circRNAs that only exhibit a canonical splicing signature.
+- "aln_split.sam" is an alignment file of all the reads that display a "splicing" signature (linear and circular).
 - Two PNG images are generated : "Circ_Coverage_genome.png" and "Circ_list_genome.png". Both of these are publication-ready figures that either depict the full coverage of circRNA reads or back-splice junctions on the genome.
 
 ### Example
