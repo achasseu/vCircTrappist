@@ -57,8 +57,8 @@ appa_list=[]
 
 # Process each read in the sequencing file and write the reads in a new alignment file
 for read in sequences:
-    if (sequences.index(read)%5000) == 0 :
-        print(str((sequences.index(read)/len(sequences))*100)+"% "+"of the sequences are stocked in a new alignment file")
+    if ((sequences.index(read)%5000) == 0) and (sequences.index(read)!=0) :
+        print(str(round((sequences.index(read)/len(sequences))*100),2)+"% "+"of the sequences are stocked in a new alignment file")
     reada=read.split("\t")
     if reada[0] in circ_list and (not read in appa_list):
         appa_list.append(read)

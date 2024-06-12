@@ -66,7 +66,7 @@ for line in totcov:
 #Drawing the sashimi plot. The abundance of the junction-mapping reads is represented by the height of the arks.
 chrnb=len(id_list)
 for i in range(chrnb):
-    plt.figure(figsize=(12,4))
+    plt.figure(figsize=(12,2))
     covloc=[]
     for line in totcov:
         line=line.replace("\n","")

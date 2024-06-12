@@ -36,14 +36,14 @@ for line in lignes:
     if "@" in line2[0]:
         out_file.write(line)
     else:
-        if "0" in line2[1] and (not "AAAAAAAAAAAA" in line2[9]): #if a read is a primary alignment and do not contain a polyA stretch
+        if "0" in line2[1] and (not ("AAAAAAAAAAAA" or "GGGGGGGGGGGG" or "CCCCCCCCCCCC" or "TTTTTTTTTTTT") in line2[9]): #if a read is a primary alignment and do not contain a polyA stretch
             for line4 in lignes[index:index+30]: #look at the next 30 alignments
                 line3=line4.split("\t")
                 if (line3[0] == line2[0]) and (("256" in line3[1]) or (line3[2]!=line2[2])): #if a read is a supplementary (repetition) alignment, give it a bad score
                     antiscore = antiscore + 5
                 if (line3[0] == line2[0]) and ("2048" in line3[1]) and (line3[2]==line2[2]): #if a read is a secondary alignment, give it a good score
                     score=score+1
-        elif "2048" in line2[1] and (not "AAAAAAAAAAAA" in line2[9]): #if a read is a secondary alignment and do not contain a polyA stretch
+        elif "2048" in line2[1] and (not ("AAAAAAAAAAAA" or "GGGGGGGGGGGG" or "CCCCCCCCCCCC" or "TTTTTTTTTTTT") in line2[9]): #if a read is a secondary alignment and do not contain a polyA stretch
             for line4 in lignes[index-10:index+10]: #look at the surrounding 20 alignments
                 line4=line4.split("\t")
                 if line4[0] == line2[0] and (("256" in line4[1]) or (line4[2]!=line2[2])): #if a read is a supplementary (repetition) alignment, give it a bad score
@@ -53,7 +53,7 @@ for line in lignes:
 
 
         #Same as above but with reverse complement
-        if "16" in line2[1] and (not "AAAAAAAAAAAA" in line2[9]):
+        if "16" in line2[1] and (not ("AAAAAAAAAAAA" or "GGGGGGGGGGGG" or "CCCCCCCCCCCC" or "TTTTTTTTTTTT") in line2[9]):
             for line4 in lignes[index:index+30]:
                 line3=line4.split("\t")
                 if (line3[0] == line2[0]) and (("272" in line3[1]) or (line3[2]!=line2[2])):

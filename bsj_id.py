@@ -25,8 +25,8 @@ index = -1
 for line in sites_line: #for every read spanning a backsplice junction
     id_list=[]
     index=index+1
-    if index%50==0:
-        print(str((index/len(sites_line))*100)+"% " + "of the sequences were analyzed for counting")
+    if (index%50==0) and (index/50!=0):
+        print(str(round(((index/len(sites_line))*100),2))+"% " + "of the sequences were analyzed for counting")
     line=line.split("\t")
     if (len(line[1]) > 25): #sometimes the sequences are trimmed for unknown reasons, don't keep them
         bsj_count=1

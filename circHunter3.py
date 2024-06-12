@@ -132,8 +132,8 @@ for read in lignes:
             if tortellini[1] == 'S':
                 d=d-tortellini[0]
             
-        if d == 150:
-            print (listereads)
+        #if d == 150:
+            #print (listereads)
         loca=listereads[-1][3]+d
         
         

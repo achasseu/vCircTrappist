@@ -78,7 +78,7 @@ echo "Comparing BS junctions and BS sites (counting)"
 python3 $SCRIPT_DIR/bsj_id.py -o $output
 
 #are the reads the results of polymerase jump ?
-echo "Are the reads the results of polymerase jump ?"
+echo "Is the splicing happening in a repeated region ?"
 python3 $SCRIPT_DIR/repet.py -f $FASTA -o $output
 
 #outputting the reads
