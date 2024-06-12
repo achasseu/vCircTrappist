@@ -13,6 +13,8 @@ The set-up we used was the following :
   
 to run vCircTrappist with a typical sequencing dataset (20Gb).
 
+It also worked with a Mac M1 Monterey version 12.2.1.
+
 ## Dependencies
 ### Linux
 #### Python3 (>3.9.7)
