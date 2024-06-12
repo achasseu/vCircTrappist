@@ -14,6 +14,7 @@ The set-up we used was the following :
 to run vCircTrappist with a typical sequencing dataset (20Gb).
 
 ## Dependencies
+### Linux
 #### Python3 (>3.9.7)
   ```
   sudo apt install python3
@@ -29,6 +30,19 @@ to run vCircTrappist with a typical sequencing dataset (20Gb).
   `sudo apt install bwa`
 #### Samtools (>1.10)
   `sudo apt install samtools`
+#### Cigar Python library (>0.1.3)
+  `pip install cigar`
+  
+### MacOS
+#### Python3 (>3.9.7)
+  ```
+  brew install python3
+  brew install python3-pip
+  ```
+#### Burrows-Wheeler Aligner (BWA) (>0.7.17)
+  `brew install bwa`
+#### Samtools (>1.10)
+  `brew install samtools`
 #### Cigar Python library (>0.1.3)
   `pip install cigar`
 
