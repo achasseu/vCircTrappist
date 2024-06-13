@@ -5,9 +5,9 @@ import sys
 import getopt
 
 argv=sys.argv[1:]
-optlist, args= getopt.getopt(argv,"b:e:o:")
+optlist, args= getopt.getopt(argv,"b:e:i:o:")
 for opt, arg in optlist:
-    if opt in "-o":
+    if opt in "-i":
         ssU2cov=open(str(arg)+"/circ_sense_U2_coverage.csv")
         ssnU2cov=open(str(arg)+"/circ_sense_nonU2_coverage.csv")
         asU2cov=open(str(arg)+"/circ_antisense_U2_coverage.csv")
@@ -16,6 +16,7 @@ for opt, arg in optlist:
 
         ###sort the top 20 of the backsplice sites that are the most covered by reads
         sites_sorting=pd.read_csv(str(arg)+"/sites_sorting.csv",sep="\t",header=0)
+        
 sites_sorting.sort_values("Count", axis=0, ascending=False,inplace=True, na_position='first')
 first_circ=sites_sorting[:20]
 first_circ=first_circ.loc[:,["Count","5'_Position_(Sense_Strand)","3'_Position_(Sense_Strand)","Chromosome","Sense_Score","U2_Score"]]

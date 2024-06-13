@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/bin/bash
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 echo "Script directory: $SCRIPT_DIR"
@@ -36,8 +35,15 @@ do
 		:)
 			echo "option $OPTARG needs an argument"
 		;;
+	I)
+		echo received -I with $OPTARG "to determine your input folder"
+		input=$OPTARG
+		;;
+		:)
+			echo "option $OPTARG needs an argument"
+		;;
 	O)
-		echo received -O with $OPTARG "to determine your output file"
+		echo received -O with $OPTARG "to determine your output folder"
 		output=$OPTARG
 		;;
 		:)
@@ -51,7 +57,8 @@ done
 
 mkdir -p $output
 
-samtools view -bS $output/aln_virus.sam > $output/aln_virus.bam
+
+samtools view -bS $input/aln_virus.sam > $output/aln_virus.bam
 samtools sort $output/aln_virus.bam > $output/aln_virus_sorted.bam
 samtools depth -a $output/aln_virus_sorted.bam > $output/aln_virus_coverage.csv
 
@@ -68,7 +75,7 @@ echo "Comparing BS junctions and BS sites (counting)"
 python3 $SCRIPT_DIR/bsj_id.py -o $output
 
 #are the reads the results of polymerase jump ?
-echo "Are the reads the results of polymerase jump ?"
+echo "Is the splicing happening in a repeated region ?"
 python3 $SCRIPT_DIR/repet.py -f $FASTA -o $output
 
 #outputting the reads
@@ -102,7 +109,7 @@ samtools sort $output/circ_antisense_nonU2.bam > $output/circ_antisense_nonU2_so
 samtools depth -a $output/circ_antisense_nonU2_sorted.bam > $output/circ_antisense_nonU2_coverage.csv
 
 #launching the graphical visualisator
-python3 $SCRIPT_DIR/covvisualisator.py -o $output
-python3 $SCRIPT_DIR/circ_visualisator.py -o $output
+python3 $SCRIPT_DIR/covvisualisator.py -i $output -o $output
+python3 $SCRIPT_DIR/circ_visualisator.py -i $output -o $output
 
 echo "Job done."

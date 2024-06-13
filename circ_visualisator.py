@@ -4,9 +4,9 @@ import sys
 import getopt
 
 argv=sys.argv[1:]
-optlist, args= getopt.getopt(argv,"b:e:o:")
+optlist, args= getopt.getopt(argv,"b:e:i:o:")
 for opt, arg in optlist:
-    if opt in "-o":
+    if opt in "-i":
         totcov=open(str(arg)+"/aln_virus_coverage.csv")
         totcov=totcov.readlines()
         sites_sorting=pd.read_csv(str(arg)+"/sites_sorting.csv",sep="\t",header=0)
@@ -16,6 +16,7 @@ for opt, arg in optlist:
         circs_list=first_circ.values.tolist()
         totcov=open(str(arg)+"/aln_virus_coverage.csv")
         totcov=totcov.readlines()
+        
 
 
 #determining the number and identities of the viral genomic segments

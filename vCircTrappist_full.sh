@@ -36,7 +36,7 @@ do
 			echo "option $OPTARG needs an argument"
 		;;
 	O)
-		echo received -O with $OPTARG "to determine your output file"
+		echo received -O with $OPTARG "to determine your output folder"
 		output=$OPTARG
 		;;
 		:)
@@ -112,7 +112,7 @@ samtools sort $output/circ_antisense_nonU2.bam > $output/circ_antisense_nonU2_so
 samtools depth -a $output/circ_antisense_nonU2_sorted.bam > $output/circ_antisense_nonU2_coverage.csv
 
 #launching the graphical visualisator
-python3 $SCRIPT_DIR/covvisualisator.py -o $output
-python3 $SCRIPT_DIR/circ_visualisator.py -o $output
+python3 $SCRIPT_DIR/covvisualisator.py -i $output -o $output
+python3 $SCRIPT_DIR/circ_visualisator.py -i $output -o $output
 
 echo "Job done."
