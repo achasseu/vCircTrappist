@@ -73,7 +73,7 @@ We advise you to clean (trimmomatic, dedupe.sh) your data before running the scr
 This command basically provides the same output but allows you to run the script without carrying out the entire alignment procedure which takes time.
 
 
-(3) `bash [Path_to_the_vCircTrappist_folder]/visu_only.sh -B [Start_Coordinates_on_the_X_axis] -E [End_Coordinates_on_the_X_axis] -O [Path_to_your_output_folder]`
+(3) `bash [Path_to_the_vCircTrappist_folder]/visu_only.sh -B [Start_Coordinates_on_the_X_axis] -E [End_Coordinates_on_the_X_axis] -I [Path_to_your_input_folder] -O [Path_to_your_output_folder]`
 
 This command allows you to run only the graphical visualisation program but on a short segment of the genome. It can be useful in the case of pretty long genomes, such as herpesviridae genomes.
 
